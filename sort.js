@@ -18,15 +18,14 @@ var Sort = {
             return arr;
         }
 
-        for (var i = 0; i < arr.length; i++) {　　　　
-            if (arr[i] < pivot) {　　　　　　
-                left.push(arr[i]);　　　　
-            } else {　　　　　　
-                right.push(arr[i]);　　　　
-            }　　
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < pivot) {
+                left.push(arr[i]);
+            } else {
+                right.push(arr[i]);
+            }
         }
 
-        　　
         return arguments.callee(left).concat([pivot], arguments.callee(right));
     },
 
