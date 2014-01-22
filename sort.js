@@ -4,46 +4,46 @@
  * @date 2013.10
  */
 
- var Sort = {
+var Sort = {
     //快速排序(递归)
-    quick : function(arr){
-        var nLength = arr.length;
+    quick: function(arr) {
 
-        if (nLength < 2){
+        var nLength = arr.length,
+            pivotIndex = Math.floor(nLength / 2),
+            pivot = arr.splice(pivotIndex, 1)[0],
+            left = [],
+            right = [];
+
+        if (nLength < 2) {
             return arr;
         }
 
-    　　var pivotIndex = Math.floor(nLength / 2);
-    　　var pivot = arr.splice(pivotIndex, 1)[0];
-    　　var left = [],right = [];
+        for (var i = 0; i < arr.length; i++) {　　　　
+            if (arr[i] < pivot) {　　　　　　
+                left.push(arr[i]);　　　　
+            } else {　　　　　　
+                right.push(arr[i]);　　　　
+            }　　
+        }
 
-    　　for (var i = 0; i < arr.length; i++){
-    　　　　if (arr[i] < pivot) {
-    　　　　　　left.push(arr[i]);
-    　　　　} else {
-    　　　　　　right.push(arr[i]);
-    　　　　}
-    　　}
-
-    　　return arguments.callee(left).concat([pivot], arguments.callee(right));
+        　　
+        return arguments.callee(left).concat([pivot], arguments.callee(right));
     },
 
     //冒泡排序
-    bubble : function(arr){
+    bubble: function(arr) {
         var nLength = arr.length;
 
-        if (nLength < 2){
+        if (nLength < 2) {
             return arr;
         }
 
         for (var i = nLength - 1; i > 0; --i) {
-            for (var j = 0; j < i; ++j)
-            {
-                if (arr[j] > arr[j + 1])
-                {
+            for (var j = 0; j < i; ++j) {
+                if (arr[j] > arr[j + 1]) {
                     var temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
                 }
             }
         }
@@ -51,22 +51,22 @@
     },
 
     //选择排序
-    selection : function(arr){
+    selection: function(arr) {
         var nLength = arr.length;
 
-        if(nLength < 2){
+        if (nLength < 2) {
             return arr;
         }
 
-        for(var i = 0; i < nLength; i++){
+        for (var i = 0; i < nLength; i++) {
             var index = i;
-            for(var j = i + 1; j < nLength; j++){
-                if(arr[j] < arr[index]){
+            for (var j = i + 1; j < nLength; j++) {
+                if (arr[j] < arr[index]) {
                     index = j;
                 }
             }
 
-            if( i !== index){
+            if (i !== index) {
                 var temp = arr[i];
                 arr[i] = arr[index];
                 arr[index] = temp;
@@ -77,24 +77,23 @@
     },
 
     //插入排序
-    insertion : function(arr){
+    insertion: function(arr) {
         var nLength = arr.length;
 
-        if (nLength < 2){
+        if (nLength < 2) {
             return arr;
         }
 
-        for (var i = 1; i < nLength; ++i)
-        {
-            var j = i, value = arr[i];
+        for (var i = 1; i < nLength; ++i) {
+            var j = i,
+                value = arr[i];
 
-            while (j > 0 && arr[j - 1] > value)
-            {
+            while (j > 0 && arr[j - 1] > value) {
                 arr[j] = arr[j - 1];
                 --j;
             }
 
-            if(j !== i){
+            if (j !== i) {
                 arr[j] = value;
             }
         }
@@ -103,10 +102,10 @@
     },
 
     //希尔排序
-    shell : function(arr){
+    shell: function(arr) {
         var nLength = arr.length;
 
-        if (nLength < 2){
+        if (nLength < 2) {
             return arr;
         }
 
@@ -125,4 +124,4 @@
         }
         return arr;
     }
- };
+};
